@@ -1,0 +1,2895 @@
+
+//SESSION START
+0,Sat Feb 17 13:20:15 EST 2024,25783
+//START OF FILE: comp533/mapper/AbstractMapper.java
+package comp533.mapper;
+
+import java.util.List;
+
+import comp533.mapping.KeyValueInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public abstract class AbstractMapper extends AMapReduceTracer implements MapperInterface<String, Integer> {
+    protected AbstractMapper() {}
+
+    public static MapperInterface<String, Integer> getSingleton() {
+        
+        throw new UnsupportedOperationException("This method should be overridden in subclasses");
+    }
+
+    @Override
+    public abstract List<KeyValueInterface<String, Integer>> map(final List<String> aStrings);
+
+    @Override
+    public abstract String toString();
+}
+
+
+//END OF FILE
+//START OF FILE: comp533/partition/PartitionerFactory.java
+package comp533.partition;
+
+public class PartitionerFactory {
+
+    private static Partitioned<String, Integer> partitioner = new Partitioner<>();
+
+    /*
+    public static Partitioned<String, Integer> getPartitioner(){
+        return  partitioner;
+    }
+    public static void setPartitioner(Partitioned<String, Integer> newPartitioner){
+        partitioner = newPartitioner;
+    }
+*/
+
+    public static Partitioned<String, Integer> getSingleton(){
+        if(partitioner == null){
+            partitioner = new Partitioner<>();
+        }
+        return partitioner;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mapping/KeyValuePair.java
+package comp533.mapping;
+
+public class KeyValuePair<K, V> implements KeyValueInterface<K, V> {
+    private final K key;
+    private V value;
+
+    public KeyValuePair(final K keyParam,final V valueParam) {
+        this.key = keyParam;
+        this.value = valueParam;
+    }
+
+    @Override
+    public K getKey() {
+        return key;
+    }
+
+    @Override
+    public V getValue() {
+        return value;
+    }
+
+    @Override
+    public void setValue(final V valueParam2) {
+        this.value = valueParam2;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + key + "," + value + ")";
+    }
+
+	
+}
+
+//END OF FILE
+//START OF FILE: comp533/partition/Partitioned.java
+package comp533.partition;
+
+public interface Partitioned<K,V> {
+    int getPartition(K key, V value, int numberOfPartitions);
+}
+
+//END OF FILE
+//START OF FILE: comp533/reducer/TokenCountingReducer.java
+package comp533.reducer;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import comp533.mapping.KeyValueInterface;
+
+import java.util.Iterator;
+
+public class TokenCountingReducer extends AMapReduceTracer implements ReducerInterface<String, Integer> {
+    private static final AMapReduceTracer INSTANCE = new TokenCountingReducer();
+
+    private TokenCountingReducer() {}
+
+    public static ReducerInterface<String, Integer> getInstance() {
+        return (ReducerInterface<String, Integer>) INSTANCE;
+    }
+
+    @Override
+    public Map<String, Integer> reduce(final List<KeyValueInterface<String, Integer>> keyValues) {
+       final Map<String, Integer> reducedMap = new HashMap<>();
+        
+//        for (KeyValueInterface<String, Integer> keyValue : keyValues) {
+//            String key = keyValue.getKey();
+//            Integer currentValue = reducedMap.getOrDefault(key, 0);
+//            reducedMap.put(key, currentValue + keyValue.getValue());
+//        }
+       final Iterator<KeyValueInterface<String, Integer>> it = keyValues.iterator();
+        while (it.hasNext()) {
+           final KeyValueInterface<String, Integer> keyValue = it.next();
+           final String key = keyValue.getKey();
+           final Integer currentValue = reducedMap.getOrDefault(key, 0);
+            reducedMap.put(key, currentValue + keyValue.getValue());
+        }
+        
+        traceReduce(keyValues, reducedMap);
+        return reducedMap;
+    }
+
+    @Override
+    public String toString() {
+        return REDUCER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/Slave.java
+package comp533;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+public class Slave extends AMapReduceTracer implements SlaveRunnable  {
+    private int slaveNumber;
+    private Object model; // Assuming model is an Object. Adjust the type accordingly.
+
+    public Slave(int slaveNumber, Object model) {
+        this.slaveNumber = slaveNumber;
+        this.model = model;
+    }
+
+    @Override
+    public void run() {
+        // Stub method for now
+    }
+
+    @Override
+    public synchronized void slaveNotifyMethod() {
+        traceNotify();
+        this.notify();
+    }
+
+
+
+    @Override
+    public String toString() {
+        return AMapReduceTracer.SLAVE;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterView.java
+/*package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+//import java.util.EventListener;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public  class TokenCounterView extends AMapReduceTracer implements PropertyChangeListener, IView {
+ //   private final PropertyChangeListener innerListener = new PropertyChangeListener() {
+	@Override
+    public void propertyChange(final PropertyChangeEvent evt) {
+       tracePropertyChange(evt);
+    }
+
+    @Override
+    public PropertyChangeListener getPropertyChangeListener() {
+    	return innerListener;
+    }
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.VIEW;
+    }
+
+	@Override
+	public void updateView(final String data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PropertyChangeListener getPropertyChangeListener() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+    public void propertyChange(final PropertyChangeEvent evt) {
+        innerListener.propertyChange(evt);
+    }
+	
+}
+*/
+
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenCounterView extends AMapReduceTracer implements PropertyChangeListener {
+   
+    @Override
+    public void propertyChange(final PropertyChangeEvent evt) {
+        tracePropertyChange(evt);
+    }
+
+/*    @Override
+    public void updateView(final String data) {
+        
+    }
+
+    @Override
+    public PropertyChangeListener getPropertyChangeListener() {
+        
+        return this;
+    }
+*/
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.VIEW;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/SlaveRunnable.java
+package comp533;
+
+public interface SlaveRunnable extends Runnable{
+    void slaveNotifyMethod();
+}
+
+//END OF FILE
+//START OF FILE: comp533/factory/MapperFactory.java
+package comp533.factory;
+
+import comp533.mapper.MapperInterface;
+import comp533.mapper.TokenCountingMapper;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class MapperFactory extends AMapReduceTracer {
+    private static MapperInterface<String, Integer> mapper = TokenCountingMapper.getSingleton();
+
+    public static MapperInterface<String, Integer> getMapper() {
+        return mapper;
+    }
+
+    public static void setMapper(final MapperInterface<String, Integer> newMapper) {
+        mapper = newMapper;
+        AMapReduceTracer.traceSingletonChange(MapperFactory.class, newMapper);
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterController.java
+package comp533.mvc;
+
+import java.util.Scanner;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenCounterController extends AMapReduceTracer implements IController{
+    private TokenCounterModel model;
+//    private IModel model;
+
+    public TokenCounterController(final TokenCounterModel modelParam) {
+        this.model = modelParam;
+    }
+
+    @Override
+    public void processInput() {
+        final Scanner scanner = new Scanner(System.in);
+
+
+//        traceNumbersPrompt();
+
+
+        //System.out.println("Controller: Please enter 'quit' or a line of tokens to be processed separated by spaces");
+
+        traceThreadPrompt();
+        int numThreads = scanner.nextInt();
+        scanner.nextLine();
+        model.setNumThreads(numThreads);
+
+
+        while (scanner.hasNextLine()) {
+            final String line = scanner.nextLine();
+            if (QUIT.equals(line.toLowerCase())) {
+                traceQuit();
+                break;
+            }
+            model.setInputString(line);
+        }
+
+        scanner.close();
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.CONTROLLER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/reducer/ReducerInterface.java
+package comp533.reducer;
+
+import java.util.List;
+import java.util.Map;
+
+import comp533.mapping.KeyValueInterface;
+
+public interface ReducerInterface<K, V> {
+    Map<K, V> reduce(List<KeyValueInterface<K, V>> keyValues);
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/IModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeListener;
+import java.util.Map;
+
+public interface IModel {
+    String getInputString();
+    void setInputString(String inputString);
+    Map<String, Integer> getResult();
+    void addPropertyChangeListener(PropertyChangeListener listener);
+}
+
+//END OF FILE
+//START OF FILE: comp533/token/TokenCounter.java
+/*
+package comp533.token;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class TokenCounter extends AMapReduceTracer {
+    private static final String QUIT = "quit";
+
+    public static void main(String[] args) {
+        TokenCounter counter = new TokenCounter();
+        counter.processInput();
+    }
+  
+    public void processInput() {
+        Scanner scanner = new Scanner(System.in);
+        traceNumbersPrompt();
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.equalsIgnoreCase(QUIT)) {
+                traceQuit();
+                break;
+            }
+
+            HashMap<String, Integer> tokenCounts = countTokens(line);
+            traceMap(line, tokenCounts.toString());
+        }
+
+        scanner.close();
+    }
+
+    private HashMap<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+
+        return tokenCounts;
+    }
+
+    
+    @Override
+    protected void traceNumbersPrompt() {
+        super.traceNumbersPrompt();
+    }
+
+    @Override
+    protected void traceQuit() {
+        super.traceQuit();
+    }
+
+    @Override
+    protected void traceMap(Object anInputs, Object aKeyValues) {
+        super.traceMap(anInputs, aKeyValues);
+    }
+   
+}
+*/
+
+
+
+package comp533.token;
+
+import comp533.mvc.TokenCounterModel;
+import comp533.mvc.TokenCounterView;
+
+import java.beans.PropertyChangeListener;
+
+import comp533.mvc.IController;
+import comp533.mvc.IModel;
+//import comp533.mvc.IView;
+import comp533.mvc.TokenCounterController;
+
+
+public class TokenCounter {
+    public static void main(final String[] args) {
+       final TokenCounterModel model = new TokenCounterModel();
+       final PropertyChangeListener view = new TokenCounterView();
+       final IController controller = new TokenCounterController(model);
+
+        model.addPropertyChangeListener((PropertyChangeListener) view);
+        controller.processInput();
+    }
+}
+
+
+//END OF FILE
+//START OF FILE: comp533/MapReduceConfigure.java
+package comp533;
+
+import comp533.mvc.TokenCounterController;
+import comp533.mvc.TokenCounterModel;
+import comp533.mvc.TokenCounterView;
+//import comp533.stubs.*;
+import comp533.token.TokenCounter;
+import gradingTools.comp533s21.assignment1.interfaces.MapReduceConfiguration;
+
+public class MapReduceConfigure implements MapReduceConfiguration {
+
+	@Override
+	public Object getBarrier(final int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getBarrierClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getClientTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getControllerClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterController.class;
+	}
+
+	@Override
+	public Object getIntSummingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.getSingleton();
+	}
+
+	@Override
+	public Class getIntSummingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.class;
+	}
+
+	@Override
+	public Object getJoiner(final int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getJoinerClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getKeyValueClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapping.KeyValuePair.class;
+	}
+
+	@Override
+	public Class<?> getMapperFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.MapperFactory.class;
+	}
+
+	@Override
+	public Class<?> getModelClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterModel.class;
+	}
+
+	@Override
+	public Object getPartitioner() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.getSingleton();
+	}
+
+	@Override
+	public Class<?> getPartitionerClass() {
+		// TODO Auto-generated method stub
+		return comp533.partition.Partitioner.class;
+	}
+
+	@Override
+	public Class<?> getPartitionerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.class;
+	}
+
+	@Override
+	public Object getReducer() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.getInstance();
+	}
+
+	@Override
+	public Class<?> getReducerClass() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.class;
+	}
+
+	@Override
+	public Class<?> getReducerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.TokenReduceFactory.class;
+	}
+
+	@Override
+	public Class<?> getRemoteClientFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteModelInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerIntegerSummer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getSlaveClass() {
+		// TODO Auto-generated method stub
+		return Slave.class;
+	}
+
+	@Override
+	public Class<?> getStandAloneFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getStandAloneIntegerSummer() {
+		// TODO Auto-generated method stub
+		return comp533.main.IntSummingMain.class;
+	}
+
+	@Override
+	public Class<TokenCounter> getStandAloneTokenCounter() {
+		// TODO Auto-generated method stub
+		return TokenCounter.class;
+	}
+
+	@Override
+	public Object getTokenCountingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.getSingleton();
+	}
+
+	@Override
+	public Class<?> getTokenCountingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.class;
+	}
+
+	@Override
+	public Class<?> getViewClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterView.class;
+	}
+
+}
+
+//END OF FILE
+//START OF FILE: comp533/RunTests.java
+package comp533;
+import grader.basics.execution.BasicProjectExecution;
+
+import gradingTools.comp533s24.assignment2.S24Assignment2Suite;
+import trace.grader.basics.GraderBasicsTraceUtility;
+public class RunTests {
+	private static final int TRACE = 2000;
+	public static void main(final String[] args) {
+		// if you set this to false, grader steps will not be traced
+		GraderBasicsTraceUtility.setTracerShowInfo(true);	
+		// if you set this to false, all grader steps will be traced,
+		// not just the ones that failed		
+		GraderBasicsTraceUtility.setBufferTracedMessages(true);
+		// Change this number if a test trace gets longer than 600 and is clipped
+		GraderBasicsTraceUtility.setMaxPrintedTraces(TRACE);
+		// Change this number if all traces together are longer than 2000
+		GraderBasicsTraceUtility.setMaxTraces(TRACE);
+		// Change this number if your process times out prematurely
+		BasicProjectExecution.setProcessTimeOut(TRACE);
+		// You need to always call such a method
+		S24Assignment2Suite.main(args);
+	}
+}
+
+//END OF FILE
+//START OF FILE: comp533/Assignment1Test.java
+package comp533;
+
+public class Assignment1Test {
+	public static void main(final String[] args) {
+	    gradingTools.comp533s24.assignment1.S24Assignment1Suite.main(args);
+	}
+
+
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/IView.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public interface IView {
+	void updateView(String data);
+
+	PropertyChangeListener getPropertyChangeListener();
+
+	void propertyChange(PropertyChangeEvent evt);
+}
+
+//END OF FILE
+//START OF FILE: comp533/factory/TokenReduceFactory.java
+package comp533.factory;
+
+import comp533.reducer.ReducerInterface;
+import comp533.reducer.TokenCountingReducer;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenReduceFactory {
+    private static ReducerInterface<String, Integer> reducer = TokenCountingReducer.getInstance();
+
+    public static ReducerInterface<String, Integer> getReducer() {
+        return reducer;
+    }
+
+    public static void setReducer(final ReducerInterface<String, Integer> newReducer) {
+        reducer = newReducer;
+        AMapReduceTracer.traceSingletonChange(TokenReduceFactory.class, newReducer);
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mapper/IntSummingMapper.java
+package comp533.mapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+//import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class IntSummingMapper extends AbstractMapper implements MapperInterface<String, Integer> {
+	private static MapperInterface<String, Integer> instance;
+	public static final String RESULT_KEY = "ResultKey";
+   // private static final MapperInterface<String, Integer> INSTANCE = new IntSummingMapper();
+
+    public IntSummingMapper() {}
+
+/*    public static MapperInterface<String, Integer> getInstance() {
+        return new IntSummingMapper();
+    }
+*/
+    
+    public static  MapperInterface<String, Integer> getSingleton() {
+        if (instance == null) {
+        	instance = new IntSummingMapper();
+        }
+        return instance;
+    }
+    @Override
+    public List<KeyValueInterface<String, Integer>> map(final List<String> aStrings) {
+        final List<KeyValueInterface<String, Integer>> mappedList = new ArrayList<>();
+        for (String string : aStrings) {
+            try {
+                final int value = Integer.parseInt(string);
+                mappedList.add(new KeyValuePair<>(RESULT_KEY, value));
+            } catch (NumberFormatException excp) {
+                // Ignore non-integer values
+            }
+        }
+
+        // Correct tracing with KeyValue objects
+        traceMap(aStrings, mappedList);
+
+        return mappedList;
+    }
+
+    @Override
+    public String toString() {
+        return INT_SUMMING_MAPPER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/IController.java
+package comp533.mvc;
+
+public interface IController {
+    void processInput();
+}
+
+//END OF FILE
+//START OF FILE: comp533/mapping/KeyValueInterface.java
+package comp533.mapping;
+
+public interface KeyValueInterface<K, V> {
+	K getKey();
+	V getValue();
+	void setValue(V value);
+}
+
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+
+//key-value
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private Map<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    public String getInputString() {
+        return inputString;
+    }
+
+
+    public void setInputString(final String inputStringParam) {
+        final String oldInput = this.inputString;
+        this.inputString = inputStringParam;
+        this.result = countTokens(inputString);
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+        createThreads();
+    }
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this);
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/main/IntSummingMain.java
+package comp533.main;
+
+import comp533.mvc.TokenCounterModel;
+import comp533.mvc.TokenCounterView;
+import comp533.mvc.IController;
+import comp533.mvc.IModel;
+//import comp533.mvc.IView;
+import comp533.mvc.TokenCounterController;
+
+import java.beans.PropertyChangeListener;
+
+import comp533.factory.MapperFactory;
+import comp533.mapper.IntSummingMapper;
+
+public class IntSummingMain {
+    public static void main(final String[] args) {
+        MapperFactory.setMapper(new IntSummingMapper()); // Set the Int Summing Mapper
+
+        final TokenCounterModel model = new TokenCounterModel();
+        final PropertyChangeListener view = new TokenCounterView();
+        final IController controller = new TokenCounterController( model);
+
+        model.addPropertyChangeListener((PropertyChangeListener) view);
+        controller.processInput();
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mapper/TokenCountingMapper.java
+package comp533.mapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenCountingMapper extends AbstractMapper implements MapperInterface<String, Integer> {
+    //private static final MapperInterface<String, Integer> INSTANCE = new TokenCountingMapper();
+	private static MapperInterface<String, Integer> instance;
+    private TokenCountingMapper() {}
+
+   
+    public static synchronized MapperInterface<String, Integer> getSingleton() {
+        if (instance == null) {
+        	instance = new TokenCountingMapper();
+        }
+        return instance;
+    }
+
+    @Override
+    public List<KeyValueInterface<String, Integer>> map(final List<String> aStrings) {
+        final List<KeyValueInterface<String, Integer>> mappedList = new ArrayList<>();
+        for (String string : aStrings) {
+        	traceMap(string,1);
+            mappedList.add(new KeyValuePair<>(string, 1));
+        }
+        return mappedList;
+    }
+
+    @Override
+    public String toString() {
+        return AMapReduceTracer.TOKEN_COUNTING_MAPPER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/mapper/MapperInterface.java
+package comp533.mapper;
+
+import java.util.List;
+
+import comp533.mapping.KeyValueInterface;
+
+public abstract interface MapperInterface<K, V> {
+    List<KeyValueInterface<K, V>> map(List<String> aStrings);
+    
+/*     static MapperInterface<K, V> getInstance(){
+    	
+    }*/
+}
+
+//END OF FILE
+//START OF FILE: comp533/partition/Partitioner.java
+package comp533.partition;
+
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class Partitioner<V> extends AMapReduceTracer implements Partitioned<String, V> {
+
+    @Override
+    public int getPartition(String key, V value, int numberOfPartitions) {
+        if (!Character.isLetter(key.charAt(0))) {
+            return 0;
+        }
+
+        char lowerCaseFirstChar = Character.toLowerCase(key.charAt(0));
+        int offset = lowerCaseFirstChar - 'a';
+        int s = (int) Math.ceil((double) ('z' - 'a' +1)/numberOfPartitions);
+        int partition = (int) Math.floor((double) (offset + 1)/s);
+
+        tracePartitionAssigned(key, value, partition, numberOfPartitions);
+        return partition;
+    }
+
+    @Override
+    public String toString(){
+        return PARTITIONER;
+    }
+
+}
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+1,Sat Feb 17 13:21:59 EST 2024,-6
+//START OF FILE: comp533/partition/PartitionerFactory.java
+package comp533.partition;
+
+public class PartitionerFactory {
+
+    private static Partitioned<String, Integer> partitioner = new Partitioner<>();
+
+
+    public static Partitioned<String, Integer> getPartitioner(){
+        return  partitioner;
+    }
+    public static void setPartitioner(Partitioned<String, Integer> newPartitioner){
+        partitioner = newPartitioner;
+    }
+
+
+    public static Partitioned<String, Integer> getSingleton(){
+        if(partitioner == null){
+            partitioner = new Partitioner<>();
+        }
+        return partitioner;
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=147	-6	=229	-2	=191
+//END OF FILE
+//START OF FILE: comp533/MapReduceConfigure.java
+package comp533;
+
+import comp533.mvc.TokenCounterController;
+import comp533.mvc.TokenCounterModel;
+import comp533.mvc.TokenCounterView;
+//import comp533.stubs.*;
+import comp533.token.TokenCounter;
+import gradingTools.comp533s21.assignment1.interfaces.MapReduceConfiguration;
+
+public class MapReduceConfigure implements MapReduceConfiguration {
+
+	@Override
+	public Object getBarrier(final int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getBarrierClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getClientTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getControllerClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterController.class;
+	}
+
+	@Override
+	public Object getIntSummingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.getSingleton();
+	}
+
+	@Override
+	public Class getIntSummingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.class;
+	}
+
+	@Override
+	public Object getJoiner(final int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getJoinerClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getKeyValueClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapping.KeyValuePair.class;
+	}
+
+	@Override
+	public Class<?> getMapperFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.MapperFactory.class;
+	}
+
+	@Override
+	public Class<?> getModelClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterModel.class;
+	}
+
+	@Override
+	public Object getPartitioner() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.getPartitioner();
+	}
+
+	@Override
+	public Class<?> getPartitionerClass() {
+		// TODO Auto-generated method stub
+		return comp533.partition.Partitioner.class;
+	}
+
+	@Override
+	public Class<?> getPartitionerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.class;
+	}
+
+	@Override
+	public Object getReducer() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.getInstance();
+	}
+
+	@Override
+	public Class<?> getReducerClass() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.class;
+	}
+
+	@Override
+	public Class<?> getReducerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.TokenReduceFactory.class;
+	}
+
+	@Override
+	public Class<?> getRemoteClientFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteModelInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerIntegerSummer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getSlaveClass() {
+		// TODO Auto-generated method stub
+		return Slave.class;
+	}
+
+	@Override
+	public Class<?> getStandAloneFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getStandAloneIntegerSummer() {
+		// TODO Auto-generated method stub
+		return comp533.main.IntSummingMain.class;
+	}
+
+	@Override
+	public Class<TokenCounter> getStandAloneTokenCounter() {
+		// TODO Auto-generated method stub
+		return TokenCounter.class;
+	}
+
+	@Override
+	public Object getTokenCountingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.getSingleton();
+	}
+
+	@Override
+	public Class<?> getTokenCountingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.class;
+	}
+
+	@Override
+	public Class<?> getViewClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterView.class;
+	}
+
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=1828	-1	+Part	=1	-4	=1	+i	=2	+er	=2463
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+2,Sat Feb 17 13:44:40 EST 2024,2370
+//START OF FILE: comp533/Barrier.java
+package comp533;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class Barrier extends AMapReduceTracer {
+    private int count;
+    private int waiting = 0; // Number of threads currently waiting
+    private final int initialCount;
+
+    public Barrier(int count) {
+        this.count = count;
+        this.initialCount = count;
+        traceBarrierCreated(this, count);
+    }
+
+    public static Barrier getBarrier(int numThreads){
+        return new Barrier(numThreads);
+    }
+
+    public synchronized void barrier() {
+        waiting++;
+        traceBarrierWaitStart(this, initialCount, waiting);
+        if (waiting < count) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        } else {
+            waiting = 0; // Reset for reuse
+            count = initialCount; // Reset count if needed
+            notifyAll();
+            traceBarrierReleaseAll(this, initialCount, waiting);
+        }
+        traceBarrierWaitEnd(this, initialCount, waiting);
+    }
+
+    @Override
+    public String toString() {
+        return BARRIER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/Joiner.java
+package comp533;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class Joiner extends AMapReduceTracer {
+    private final int total;
+    private int finished = 0;
+
+    public Joiner(int total) {
+        this.total = total;
+        traceJoinerCreated(this, total);
+    }
+
+    public static Joiner getJoiner(int numThreads){
+        return new Joiner(numThreads);
+    }
+
+    public synchronized void finished() {
+        finished++;
+        traceJoinerFinishedTask(this, total, finished);
+        if (finished >= total) {
+            notifyAll();
+            traceJoinerRelease(this, total, finished);
+        }
+    }
+
+    public synchronized void join() {
+        while (finished < total) {
+            traceJoinerWaitStart(this, total, finished);
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            traceJoinerWaitEnd(this, total, finished);
+        }
+        finished = 0; // Reset for reuse
+    }
+
+    @Override
+    public String toString() {
+        return JOINER;
+    }
+}
+
+//END OF FILE
+//START OF FILE: comp533/MapReduceConfigure.java
+package comp533;
+
+import comp533.mvc.TokenCounterController;
+import comp533.mvc.TokenCounterModel;
+import comp533.mvc.TokenCounterView;
+//import comp533.stubs.*;
+import comp533.token.TokenCounter;
+import gradingTools.comp533s21.assignment1.interfaces.MapReduceConfiguration;
+
+public class MapReduceConfigure implements MapReduceConfiguration {
+
+	@Override
+	public Object getBarrier(final int arg0) {
+		// TODO Auto-generated method stub
+		return comp533.Barrier.getBarrier(arg0);
+	}
+
+	@Override
+	public Class<?> getBarrierClass() {
+		// TODO Auto-generated method stub
+		return comp533.Barrier.class;
+	}
+
+	@Override
+	public Class<?> getClientTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getControllerClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterController.class;
+	}
+
+	@Override
+	public Object getIntSummingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.getSingleton();
+	}
+
+	@Override
+	public Class getIntSummingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.IntSummingMapper.class;
+	}
+
+	@Override
+	public Object getJoiner(final int arg0) {
+		// TODO Auto-generated method stub
+		return comp533.Joiner.getJoiner(arg0);
+	}
+
+	@Override
+	public Class<?> getJoinerClass() {
+		// TODO Auto-generated method stub
+		return comp533.Joiner.class;
+	}
+
+	@Override
+	public Class<?> getKeyValueClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapping.KeyValuePair.class;
+	}
+
+	@Override
+	public Class<?> getMapperFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.MapperFactory.class;
+	}
+
+	@Override
+	public Class<?> getModelClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterModel.class;
+	}
+
+	@Override
+	public Object getPartitioner() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.getPartitioner();
+	}
+
+	@Override
+	public Class<?> getPartitionerClass() {
+		// TODO Auto-generated method stub
+		return comp533.partition.Partitioner.class;
+	}
+
+	@Override
+	public Class<?> getPartitionerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.partition.PartitionerFactory.class;
+	}
+
+	@Override
+	public Object getReducer() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.getInstance();
+	}
+
+	@Override
+	public Class<?> getReducerClass() {
+		// TODO Auto-generated method stub
+		return comp533.reducer.TokenCountingReducer.class;
+	}
+
+	@Override
+	public Class<?> getReducerFactory() {
+		// TODO Auto-generated method stub
+		return comp533.factory.TokenReduceFactory.class;
+	}
+
+	@Override
+	public Class<?> getRemoteClientFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteClientObjectInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getRemoteModelInterface() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerIntegerSummer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getServerTokenCounter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getSlaveClass() {
+		// TODO Auto-generated method stub
+		return Slave.class;
+	}
+
+	@Override
+	public Class<?> getStandAloneFacebookMapReduce() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getStandAloneIntegerSummer() {
+		// TODO Auto-generated method stub
+		return comp533.main.IntSummingMain.class;
+	}
+
+	@Override
+	public Class<TokenCounter> getStandAloneTokenCounter() {
+		// TODO Auto-generated method stub
+		return TokenCounter.class;
+	}
+
+	@Override
+	public Object getTokenCountingMapper() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.getSingleton();
+	}
+
+	@Override
+	public Class<?> getTokenCountingMapperClass() {
+		// TODO Auto-generated method stub
+		return comp533.mapper.TokenCountingMapper.class;
+	}
+
+	@Override
+	public Class<?> getViewClass() {
+		// TODO Auto-generated method stub
+		return TokenCounterView.class;
+	}
+
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=446	-4	+comp533.Barrier.getBarrier(arg0)	=100	-2	+comp533.Barrier.c	=1	-1	+ass	=638	+comp533.Joi	=1	-3	+er.getJoiner(arg0)	=99	+comp533.Joi	=1	-2	+er.c	=1	+ass	=3003
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+3,Sat Feb 17 19:24:11 EST 2024,4017
+//START OF FILE: comp533/mapping/KeyValuePair.java
+package comp533.mapping;
+
+public class KeyValuePair<K, V> implements KeyValueInterface<K, V> {
+    private final K key;
+    private V value;
+
+    public KeyValuePair(final K keyParam,final V valueParam) {
+        this.key = keyParam;
+        this.value = valueParam;
+    }
+
+    @Override
+    public  K getKey() {
+        return key;
+    }
+
+    @Override
+    public  V getValue() {
+        return value;
+    }
+
+    @Override
+    public void setValue(final V valueParam2) {
+        this.value = valueParam2;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + key + "," + value + ")";
+    }
+
+	
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=299	+ 	=64	+ 	=250
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterController.java
+package comp533.mvc;
+
+import java.util.Scanner;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenCounterController extends AMapReduceTracer implements IController{
+    private TokenCounterModel model;
+//    private IModel model;
+
+    public TokenCounterController(final TokenCounterModel modelParam) {
+        this.model = modelParam;
+    }
+
+    @Override
+    public void processInput() {
+        final Scanner scanner = new Scanner(System.in);
+
+        //System.out.println("Controller: Please enter 'quit' or a line of tokens to be processed separated by spaces");
+
+        traceThreadPrompt();
+        if (scanner.hasNextInt()) {
+            int numThreads = scanner.nextInt();
+            scanner.nextLine();
+            model.setNumThreads(numThreads);
+        }
+
+        traceNumbersPrompt();
+        while (scanner.hasNextLine()) {
+            final String line = scanner.nextLine();
+            if (QUIT.equals(line.toLowerCase())) {
+                traceQuit();
+                break;
+            }
+            model.setInputString(line);
+        }
+
+        scanner.close();
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.CONTROLLER;
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=478	-35	=160	+f (scanner.hasNextInt()) %7B%0A            i	=35	+    	=36	+    	=33	+        %7D	=1	+%0A        traceNumbersPrompt();	=426
+//END OF FILE
+//START OF FILE: comp533/Slave.java
+package comp533;
+
+import comp533.mapping.KeyValuePair;
+import comp533.mvc.TokenCounterModel;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+import java.util.LinkedList;
+import java.util.concurrent.BlockingQueue;
+
+public class Slave extends AMapReduceTracer implements SlaveRunnable  {
+    private int slaveNumber;
+    private TokenCounterModel model;
+    private Barrier barrier;
+    private Joiner joiner;
+    private BlockingQueue<KeyValuePair> keyValuePairBlockingQueue;
+    private LinkedList<KeyValuePair> reductionQueue;
+
+    public Slave(int slaveNumber, TokenCounterModel model, Barrier barrier, Joiner joiner, BlockingQueue<KeyValuePair> keyValuePairBlockingQueue, LinkedList<KeyValuePair> reductionQueue) {
+        this.slaveNumber = slaveNumber;
+        this.model = model;
+        this.barrier = barrier;
+        this.joiner = joiner;
+        this.keyValuePairBlockingQueue = keyValuePairBlockingQueue;
+        this.reductionQueue = reductionQueue;
+    }
+
+    @Override
+    public void run() {
+        try {
+            barrier.barrier();
+            KeyValuePair<String, Integer> pair;
+            while (true){
+                pair = keyValuePairBlockingQueue.take();
+                if (pair.getKey() == null&& pair.getValue() == null) {break;};
+
+                synchronized (reductionQueue){
+                    reductionQueue.add(pair);
+                }
+
+            }
+        }catch(InterruptedException e){
+            Thread.currentThread().interrupt();
+        }finally {
+            joiner.finished();
+            synchronized (this){
+                slaveNotifyMethod();
+            }
+        }
+    }
+
+    @Override
+    public synchronized void slaveNotifyMethod() {
+        traceNotify();
+        this.notify();
+    }
+
+
+
+    @Override
+    public String toString() {
+        return AMapReduceTracer.SLAVE;
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=25	+comp533.mapping.KeyValuePair;%0Aimport comp533.mvc.TokenCounterModel;%0Aimport 	=54	+%0Aimport java.util.LinkedList;%0Aimport java.util.concurrent.BlockingQueue;%0A%0A	=113	-3	+Tok	=1	-1	+nCoun	=1	+erModel	=7	+%0A	=1	-2	=1	-5	+  pr	=1	-2	+vate	=1	-3	+Barri	=1	-1	+r	=1	+barr	=1	-1	+er;%0A   	=1	+priv	=1	+te Joi	=1	+er	=1	-2	=1	+oin	=1	-1	+r;%0A    priva	=1	-1	+e	=1	-3	+BlockingQueue%3CKeyValuePair%3E keyValuePairBlockingQ	=1	-2	+eue;%0A   	=1	+priva	=1	-1	=2	+LinkedLis	=1	+%3CKe	=1	-1	+Valu	=1	-1	+P	=1	-3	+i	=1	+%3E re	=1	+uct	=1	+o	=1	-4	+Queue;	=36	-1	+TokenCounterModel model, Barrier 	=1	+arrier, Joiner 	=1	+oin	=1	+r, Blo	=1	-1	+kingQueue%3CKeyValuePair%3E	=1	-1	+keyValuePairBl	=1	+ckingQueue, Linke	=1	+List%3CK	=1	+yVa	=1	+uePair%3E reductionQueue	=76	+    this.barrier = barrier;%0A        this.joiner = joiner;%0A        this.keyValuePairBlockingQueue = keyValuePairBlockingQueue;%0A        this.reductionQueue = reductionQueue;%0A    	=49	-2	+try %7B%0A            barrier.barrier();%0A 	=1	+          KeyValuePair%3C	=2	+ring, Integer%3E pair;%0A            while (tr	=1	+e)%7B%0A                pair = keyValuePairBlockingQueue.take();%0A                if (pair.getKey() == null&& pair.getValue() == null) %7B	=1	+reak;%7D;%0A%0A            	=1	-1	+   synchronized (r	=1	+duc	=1	+ionQueue)%7B%0A                    reductionQueue.add(pair);%0A                %7D%0A%0A            %7D%0A        %7Dcatc	=1	+(InterruptedExcepti	=1	+n e)%7B%0A            Threa	=1	+.currentThread().interrupt();%0A	=1	+       %7D	=1	+inally %7B%0A            j	=1	+ine	=1	+.finished();%0A	=1	+           sy	=1	+chr	=1	-1	+nized (this)%7B%0A                slaveNotifyMethod();%0A            %7D%0A        %7D	=220
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+//key-value
+import comp533.Barrier;
+import comp533.Joiner;
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private HashMap<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    /*
+    public String getInputString() {
+        return inputString;
+    }
+*/
+    private final BlockingQueue<KeyValuePair> keyValuePairQueue = new ArrayBlockingQueue<>(BUFFER_SIZE);
+    private final List<LinkedList<KeyValuePair>> reductionQueueList = new ArrayList<>();
+
+    private Joiner joiner;
+
+    private Barrier barrier;
+
+
+    /* assignment 1 setInputString
+    public void setInputString(final String inputString) {
+
+        //initialize or clear relevant data structures
+        final String oldInput = this.inputString;
+        this.inputString = inputString;
+        this.result = countTokens(inputString);
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+    }
+*/
+
+    public void setInputString(final String inputString){
+        this.inputString = inputString;
+        //result.clear();
+        for (LinkedList<KeyValuePair> queue : this.reductionQueueList){
+            queue.clear();
+        }
+        keyValuePairQueue.clear();
+
+
+        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue
+        String [] tokens = inputString.split(" ");
+        for (String token : tokens){
+            KeyValuePair keyValuePair = new KeyValuePair<>(token, 1);
+            traceEnqueueRequest(keyValuePair);
+
+            try{
+                this.keyValuePairQueue.put(keyValuePair);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+            traceEnqueue(this.keyValuePairQueue);
+        }
+
+        //add end-of-input markers to KeyValuePairQueue for each slave
+        for (int i=0; i< this.numThreads; i++){
+            try{
+                this.keyValuePairQueue.put(new KeyValuePair<>(null, null));
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+
+
+        //wait for all slave threads to finish their work using the joiner
+        this.joiner.join();
+
+        //merge results from all reduction queues into the final result map
+        mergeReductionQueues();
+
+        //announce the change in the result property
+        tracePropertyChange(new PropertyChangeEvent(this,"Result", null, this.result));
+    }
+
+
+    private synchronized void mergeReductionQueues(){
+        for (LinkedList<KeyValuePair> reductionQueue : this.reductionQueueList){
+            for (KeyValuePair pair : reductionQueue){
+                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);
+            }
+        }
+        traceAddedToMap(result, reductionQueueList);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+
+        this.joiner = Joiner.getJoiner(numThreads) ;
+        this.barrier = Barrier.getBarrier(numThreads);
+
+
+        this.reductionQueueList.clear();
+        for (int i=0; i<numThreads; i++){
+            this.reductionQueueList.add(new LinkedList<>());
+        }
+
+        createThreads();
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+
+    }
+
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i));
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=164	+import java.util.concurrent.ArrayBlockingQueue;%0Aimport java.util.concurrent.BlockingQueue;%0A	=12	+%0Aimport comp533.Barrier;%0Aimport comp533.Joiner;	=142	+import comp533.mapping.KeyValuePair;%0A	=286	+Hash	=201	+    /*%0A	=71	+*/	=1	+    private final BlockingQueue%3CKeyValuePair%3E keyValuePairQueue = new ArrayBlockingQueue%3C%3E(BUFFER_SIZE);%0A    private final List%3CLinkedList%3CKeyValuePair%3E%3E reductionQueueList = new ArrayList%3C%3E();%0A%0A    private Joiner joiner;%0A%0A    private Barrier barrier;%0A%0A%0A    /* assignment 1 setInputString	=56	-1	+) %7B%0A%0A        //initi	=1	+lize o	=1	+ cle	=1	-2	+r relevant data	=1	-1	+structures	=89	-5	=201	+%0A*/%0A%0A    public void setInputString(final String inputString)%7B%0A        this.inputString = inputString;%0A        //result.clear();%0A        for (LinkedList%3CKeyValuePair%3E queue : this.reductionQueueList)%7B%0A            queue.clear();%0A        %7D%0A        keyValuePairQueue.clear();%0A%0A%0A        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue%0A        String %5B%5D tokens = inputString.split(%22 %22);%0A        for (String token : tokens)%7B%0A            KeyValuePair keyValuePair = new KeyValuePair%3C%3E(token, 1);%0A            traceEnqueueRequest(keyValuePair);%0A%0A            try%7B%0A                this.keyValuePairQueue.put(keyValuePair);%0A            %7Dcatch (InterruptedException e)%7B%0A                Thread.currentThread().interrupt();%0A                return;%0A            %7D%0A            traceEnqueue(this.keyValuePairQueue);%0A        %7D%0A%0A        //add end-of-input markers to KeyValuePairQueue for each slave%0A        for (int i=0; i%3C this.numThreads; i++)%7B%0A            try%7B%0A                this.keyValuePairQueue.put(new KeyValuePair%3C%3E(null, null));%0A            %7Dcatch (InterruptedException e)%7B%0A                Thread.currentThread().interrupt();%0A                return;%0A            %7D%0A        %7D%0A%0A%0A        //wait for all slave threads to finish their work using the joiner%0A        this.joiner.join();%0A%0A        //merge results from all reduction queues into the final result map%0A        mergeReductionQueues();%0A%0A        //announce the change in the result property%0A        tracePropertyChange(new PropertyChangeEvent(this,%22Result%22, null, this.result));%0A    %7D%0A%0A%0A    private synchronized void mergeReductionQueues()%7B%0A        for (LinkedList%3CKeyValuePair%3E reductionQueue : this.reductionQueueList)%7B%0A            for (KeyValuePair pair : reductionQueue)%7B%0A                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);%0A            %7D%0A        %7D%0A        traceAddedToMap(result, reductionQueueList);%0A    %7D	=1570	+%0A        this.joiner = Joiner.getJoiner(numThreads) ;%0A        this.barrier = Barrier.getBarrier(numThreads);%0A%0A%0A        this.reductionQueueList.clear();%0A        for (int i=0; i%3CnumThreads; i++)%7B%0A            this.reductionQueueList.add(new LinkedList%3C%3E());%0A        %7D%0A%0A        createThreads();%0A	=105	-24	=8	+%0A	=249	+, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i)	=626
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+4,Sat Feb 17 19:38:33 EST 2024,2
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+//key-value
+import comp533.Barrier;
+import comp533.Joiner;
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private HashMap<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    /*
+    public String getInputString() {
+        return inputString;
+    }
+*/
+    private final BlockingQueue<KeyValuePair> keyValuePairQueue = new ArrayBlockingQueue<>(BUFFER_SIZE);
+    private final List<LinkedList<KeyValuePair>> reductionQueueList = new ArrayList<>();
+
+    private Joiner joiner;
+
+    private Barrier barrier;
+
+
+    /* assignment 1 setInputString
+    public void setInputString(final String inputString) {
+
+        //initialize or clear relevant data structures
+        final String oldInput = this.inputString;
+        this.inputString = inputString;
+        this.result = countTokens(inputString);
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+    }
+*/
+
+    public void setInputString(final String inputString){
+        this.inputString = inputString;
+        result.clear();
+        for (LinkedList<KeyValuePair> queue : this.reductionQueueList){
+            queue.clear();
+        }
+        keyValuePairQueue.clear();
+
+
+
+
+        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue
+        String [] tokens = inputString.split(" ");
+        for (String token : tokens){
+            KeyValuePair keyValuePair = new KeyValuePair<>(token, 1);
+            traceEnqueueRequest(keyValuePair);
+
+            try{
+                this.keyValuePairQueue.put(keyValuePair);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+            traceEnqueue(this.keyValuePairQueue);
+        }
+
+        //add end-of-input markers to KeyValuePairQueue for each slave
+        for (int i=0; i< this.numThreads; i++){
+            try{
+                this.keyValuePairQueue.put(new KeyValuePair<>(null, null));
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+
+
+
+        //wait for all slave threads to finish their work using the joiner
+        this.joiner.join();
+
+        //merge results from all reduction queues into the final result map
+        mergeReductionQueues();
+
+        //announce the change in the result property
+        tracePropertyChange(new PropertyChangeEvent(this,"Result", null, this.result));
+    }
+
+
+
+    private synchronized void mergeReductionQueues(){
+        for (LinkedList<KeyValuePair> reductionQueue : this.reductionQueueList){
+            for (KeyValuePair pair : reductionQueue){
+                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);
+            }
+        }
+        traceAddedToMap(result, reductionQueueList);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+
+        this.joiner = Joiner.getJoiner(numThreads) ;
+        this.barrier = Barrier.getBarrier(numThreads);
+
+
+        this.reductionQueueList.clear();
+        for (int i=0; i<numThreads; i++){
+            this.reductionQueueList.add(new LinkedList<>());
+        }
+
+        createThreads();
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+
+    }
+
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i));
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=1869	-2	=159	+%0A%0A	=932	+%0A	=359	+%0A	=3287
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+5,Sat Feb 17 20:36:44 EST 2024,2
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+//key-value
+import comp533.Barrier;
+import comp533.Joiner;
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private HashMap<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    /*
+    public String getInputString() {
+        return inputString;
+    }
+*/
+    private final BlockingQueue<KeyValuePair> keyValuePairQueue = new ArrayBlockingQueue<>(BUFFER_SIZE);
+    private final List<LinkedList<KeyValuePair>> reductionQueueList = new ArrayList<>();
+
+    private Joiner joiner;
+
+    private Barrier barrier;
+
+
+    /* assignment 1 setInputString
+    public void setInputString(final String inputString) {
+
+        //initialize or clear relevant data structures
+        final String oldInput = this.inputString;
+        this.inputString = inputString;
+        this.result = countTokens(inputString);
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+    }
+*/
+
+    public void setInputString(final String inputString){
+        this.inputString = inputString;
+        //result.clear();
+        for (LinkedList<KeyValuePair> queue : this.reductionQueueList){
+            queue.clear();
+        }
+        keyValuePairQueue.clear();
+
+
+
+
+        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue
+        String [] tokens = inputString.split(" ");
+        for (String token : tokens){
+            KeyValuePair keyValuePair = new KeyValuePair<>(token, 1);
+            traceEnqueueRequest(keyValuePair);
+
+            try{
+                this.keyValuePairQueue.put(keyValuePair);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+            traceEnqueue(this.keyValuePairQueue);
+        }
+
+        //add end-of-input markers to KeyValuePairQueue for each slave
+        for (int i=0; i< this.numThreads; i++){
+            try{
+                this.keyValuePairQueue.put(new KeyValuePair<>(null, null));
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+
+
+
+        //wait for all slave threads to finish their work using the joiner
+        this.joiner.join();
+
+        //merge results from all reduction queues into the final result map
+        mergeReductionQueues();
+
+        //announce the change in the result property
+        tracePropertyChange(new PropertyChangeEvent(this,"Result", null, this.result));
+    }
+
+
+
+    private synchronized void mergeReductionQueues(){
+        for (LinkedList<KeyValuePair> reductionQueue : this.reductionQueueList){
+            for (KeyValuePair pair : reductionQueue){
+                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);
+            }
+        }
+        traceAddedToMap(result, reductionQueueList);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+
+        this.joiner = Joiner.getJoiner(numThreads) ;
+        this.barrier = Barrier.getBarrier(numThreads);
+
+
+        this.reductionQueueList.clear();
+        for (int i=0; i<numThreads; i++){
+            this.reductionQueueList.add(new LinkedList<>());
+        }
+
+        createThreads();
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+
+    }
+
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i));
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=1869	+//	=4741
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+6,Sun Feb 18 13:45:19 EST 2024,-67
+//START OF FILE: comp533/mvc/TokenCounterController.java
+package comp533.mvc;
+
+import java.util.Scanner;
+
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+public class TokenCounterController extends AMapReduceTracer implements IController{
+    private TokenCounterModel model;
+//    private IModel model;
+
+    public TokenCounterController(final TokenCounterModel modelParam) {
+        this.model = modelParam;
+    }
+
+    @Override
+    public void processInput() {
+        final Scanner scanner = new Scanner(System.in);
+
+        //System.out.println("Controller: Please enter 'quit' or a line of tokens to be processed separated by spaces");
+
+    /*
+        traceThreadPrompt();
+        if (scanner.hasNextInt()) {
+            int numThreads = scanner.nextInt();
+            scanner.nextLine();
+            model.setNumThreads(numThreads);
+        }
+*/
+        traceNumbersPrompt();
+        while (scanner.hasNextLine()) {
+            final String line = scanner.nextLine();
+            if (QUIT.equals(line.toLowerCase())) {
+                traceQuit();
+                break;
+            }
+            model.setInputString(line);
+        }
+
+        scanner.close();
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.CONTROLLER;
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=604	+/*%0A    	=196	+*/	=456
+//END OF FILE
+//START OF FILE: comp533/Slave.java
+package comp533;
+
+import comp533.mapping.KeyValuePair;
+import comp533.mvc.TokenCounterModel;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+
+import java.util.LinkedList;
+import java.util.concurrent.BlockingQueue;
+
+public class Slave extends AMapReduceTracer implements SlaveRunnable  {
+    private int slaveNumber;
+    private TokenCounterModel model;
+    private Barrier barrier;
+    private Joiner joiner;
+    private BlockingQueue<KeyValuePair> keyValuePairQueue;
+    private LinkedList<KeyValuePair> reductionQueue;
+
+    public Slave(int slaveNumber, TokenCounterModel model, Barrier barrier, Joiner joiner, BlockingQueue<KeyValuePair> keyValuePairQueue, LinkedList<KeyValuePair> reductionQueue) {
+        this.slaveNumber = slaveNumber;
+        this.model = model;
+        this.barrier = barrier;
+        this.joiner = joiner;
+        this.keyValuePairQueue = keyValuePairQueue;
+        this.reductionQueue = reductionQueue;
+    }
+
+    @Override
+    public void run() {
+        try {
+            barrier.barrier();
+            KeyValuePair<String, Integer> pair;
+            while (true){
+                pair = keyValuePairQueue.take();
+                if (pair.getKey() == null&& pair.getValue() == null) {break;};
+
+                synchronized (reductionQueue){
+                    reductionQueue.add(pair);
+                }
+
+            }
+        }catch(InterruptedException e){
+            Thread.currentThread().interrupt();
+        }finally {
+            joiner.finished();
+            synchronized (this){
+                slaveNotifyMethod();
+            }
+        }
+    }
+
+    @Override
+    public synchronized void slaveNotifyMethod() {
+        traceNotify();
+        this.notify();
+    }
+
+
+
+    @Override
+    public String toString() {
+        return AMapReduceTracer.SLAVE;
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=474	-8	=7	+	=185	-8	=205	-8	=20	-8	=217	+	=35	-8	=671
+//END OF FILE
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+//key-value
+import comp533.Barrier;
+import comp533.Joiner;
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private Map<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    /*
+    public String getInputString() {
+        return inputString;
+    }
+*/
+    private final BlockingQueue<KeyValuePair> keyValuePairQueue = new ArrayBlockingQueue<>(BUFFER_SIZE);
+    private final List<LinkedList<KeyValuePair>> reductionQueueList = new ArrayList<>();
+
+    private Joiner joiner;
+
+    private Barrier barrier;
+
+
+
+    public void setInputString(final String inputString) {
+
+        //initialize or clear relevant data structures
+        final String oldInput = this.inputString;
+        this.inputString = inputString;
+        this.result = countTokens(inputString);
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+    }
+
+
+    /*
+    public void setInputString(final String inputString){
+        this.inputString = inputString;
+        //result.clear();
+        for (LinkedList<KeyValuePair> queue : this.reductionQueueList){
+            queue.clear();
+        }
+        keyValuePairQueue.clear();
+
+        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue
+        String [] tokens = inputString.split(" ");
+        for (String token : tokens){
+            KeyValuePair keyValuePair = new KeyValuePair<>(token, 1);
+            traceEnqueueRequest(keyValuePair);
+
+            try{
+                this.keyValuePairQueue.put(keyValuePair);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+            traceEnqueue(this.keyValuePairQueue);
+        }
+
+        //add end-of-input markers to KeyValuePairQueue for each slave
+        for (int i=0; i< this.numThreads; i++){
+            try{
+                this.keyValuePairQueue.put(new KeyValuePair<>(null, null));
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+
+        //wait for all slave threads to finish their work using the joiner
+        this.joiner.join();
+
+        //merge results from all reduction queues into the final result map
+        mergeReductionQueues();
+
+        //announce the change in the result property
+        tracePropertyChange(new PropertyChangeEvent(this,"Result", null, this.result));
+    }
+
+
+*/
+    private synchronized void mergeReductionQueues(){
+        for (LinkedList<KeyValuePair> reductionQueue : this.reductionQueueList){
+            for (KeyValuePair pair : reductionQueue){
+                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);
+            }
+        }
+        traceAddedToMap(result, reductionQueueList);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+
+        this.joiner = Joiner.getJoiner(numThreads) ;
+        this.barrier = Barrier.getBarrier(numThreads);
+
+
+        this.reductionQueueList.clear();
+        for (int i=0; i<numThreads; i++){
+            this.reductionQueueList.add(new LinkedList<>());
+        }
+
+
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+        createThreads();
+    }
+
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i));
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=779	-4	=536	-34	=406	-1	+%0A%0A    	=1	-1	+*	=270	-3	=928	-2	=362	+*/	=2209	-24	=106	+        createThreads();	=946
+//END OF FILE
+
+//SESSION END
+
+//SESSION START
+7,Sun Feb 18 15:13:19 EST 2024,231
+//START OF FILE: comp533/mvc/TokenCounterModel.java
+package comp533.mvc;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+//key-value
+import comp533.Barrier;
+import comp533.Joiner;
+import comp533.Slave;
+import comp533.factory.MapperFactory;
+import comp533.mapper.MapperInterface;
+import comp533.mapping.KeyValueInterface;
+import comp533.mapping.KeyValuePair;
+import comp533.reducer.ReducerInterface;
+import gradingTools.comp533s19.assignment0.AMapReduceTracer;
+//import gradingTools.comp533s19.assignment0.testcases.factories.ReducerFactory;
+
+public class TokenCounterModel extends AMapReduceTracer {
+    private String inputString;
+    private Map<String, Integer> result;
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    private int numThreads = 0;
+    private List<Thread> threads = new ArrayList<>();
+
+
+    /*
+    public String getInputString() {
+        return inputString;
+    }
+*/
+    private final BlockingQueue<KeyValuePair> keyValuePairQueue = new ArrayBlockingQueue<>(BUFFER_SIZE);
+    private final List<LinkedList<KeyValuePair>> reductionQueueList = new ArrayList<>();
+
+    private Joiner joiner;
+
+    private Barrier barrier;
+
+
+
+    public void setInputString(final String inputString) {
+
+        //initialize or clear relevant data structures
+        final String oldInput = this.inputString;
+        this.inputString = inputString;
+        this.result = countTokens(inputString);
+        /* using firePropertyChange
+        changeSupport.firePropertyChange("InputString", oldInput, inputString);
+        changeSupport.firePropertyChange("Result", null, result);
+         */
+        tracePropertyChange(new PropertyChangeEvent(this, "InputString", oldInput, inputString));
+        tracePropertyChange(new PropertyChangeEvent(this, "Results", null, result));
+    }
+
+
+    /*
+    public void setInputString(final String inputString){
+        this.inputString = inputString;
+        //result.clear();
+        for (LinkedList<KeyValuePair> queue : this.reductionQueueList){
+            queue.clear();
+        }
+        keyValuePairQueue.clear();
+
+        //tokenize input string and map tokens to KeyValue, adding them to KeyValuePairQueue
+        String [] tokens = inputString.split(" ");
+        for (String token : tokens){
+            KeyValuePair keyValuePair = new KeyValuePair<>(token, 1);
+            traceEnqueueRequest(keyValuePair);
+
+            try{
+                this.keyValuePairQueue.put(keyValuePair);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+            traceEnqueue(this.keyValuePairQueue);
+        }
+
+        //add end-of-input markers to KeyValuePairQueue for each slave
+        for (int i=0; i< this.numThreads; i++){
+            try{
+                this.keyValuePairQueue.put(new KeyValuePair<>(null, null));
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+
+        //wait for all slave threads to finish their work using the joiner
+        this.joiner.join();
+
+        //merge results from all reduction queues into the final result map
+        mergeReductionQueues();
+
+        //announce the change in the result property
+        tracePropertyChange(new PropertyChangeEvent(this,"Result", null, this.result));
+    }
+
+
+*/
+    private synchronized void mergeReductionQueues(){
+        for (LinkedList<KeyValuePair> reductionQueue : this.reductionQueueList){
+            for (KeyValuePair pair : reductionQueue){
+                this.result.merge((String) pair.getKey(), (Integer) pair.getValue(), Integer:: sum);
+            }
+        }
+        traceAddedToMap(result, reductionQueueList);
+    }
+
+    public Map<String, Integer> getResult() {
+        return result;
+    }
+
+    /*mvc countToken
+    private Map<String, Integer> countTokens(String input) {
+        HashMap<String, Integer> tokenCounts = new HashMap<>();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            tokenCounts.put(token, tokenCounts.getOrDefault(token, 0) + 1);
+        }
+        return tokenCounts;
+    }
+*/
+    
+    /* key value countToken*/
+    private Map<String, Integer> countTokens(final String input) {
+        final MapperInterface<String, Integer> mapper = MapperFactory.getMapper();
+        final List<String> tokens = Arrays.asList(input.split(" "));
+        final List<KeyValueInterface<String, Integer>> mappedTokens = mapper.map(tokens);
+
+        final ReducerInterface<String, Integer> reducer = comp533.factory.TokenReduceFactory.getReducer();
+        // Tracing the mapping operation
+        traceMap(input, mappedTokens);
+
+        // Aggregate the mapped tokens
+        final Map<String, Integer> tokenCounts = reducer.reduce(mappedTokens);
+        
+        
+/*        for (KeyValueInterface<String, Integer> b : mappedTokens) {
+            final String key = b.getKey();
+            tokenCounts.put(key, tokenCounts.getOrDefault(key, 0) + b.getValue());
+        }*/
+
+        // Tracing the reducing operation
+        traceReduce(mappedTokens, tokenCounts);
+
+        return tokenCounts;
+    }
+
+    public void setNumThreads(final int numThreads){
+        int oldNumThreads = this.numThreads;
+        this.numThreads = numThreads;
+
+
+        this.joiner = Joiner.getJoiner(numThreads) ;
+        this.barrier = Barrier.getBarrier(numThreads);
+
+
+        this.reductionQueueList.clear();
+        for (int i=0; i<numThreads; i++){
+            this.reductionQueueList.add(new LinkedList<>());
+        }
+
+
+        tracePropertyChange(new PropertyChangeEvent(this,"NumThreads", oldNumThreads, this.numThreads));
+        createThreads();
+    }
+
+
+    private void createThreads(){
+        List<Thread> oldThreads = new ArrayList<>(threads);
+        threads.forEach(Thread::interrupt);
+        threads.clear();
+
+        for (int i=0; i<numThreads; i++){
+            Slave slave = new Slave(i, this, barrier, joiner,keyValuePairQueue, reductionQueueList.get(i));
+            Thread thread = new Thread(slave, "Slave" + i);
+            threads.add(thread);
+            thread.start();
+        }
+        tracePropertyChange(new PropertyChangeEvent(this, "Threads", oldThreads,new ArrayList<>(threads)));
+    }
+
+
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public String toString() {
+        return gradingTools.comp533s19.assignment0.AMapReduceTracer.MODEL;
+    }
+
+    public List<Thread> getThreads(){
+        return Collections.unmodifiableList(threads);
+    }
+}
+
+(DIFF_FROM_PREVIOUS_FILE)
+=1577	+/* using firePropertyChange%0A        	=135	+);%0A         */%0A        tracePropertyChange(new PropertyChangeEvent(this, %22InputString%22, oldInput, inputString));%0A        tracePropertyChange(new PropertyChangeEvent(this, %22Results%22, null, result)	=4864
+//END OF FILE
+
+//SESSION END

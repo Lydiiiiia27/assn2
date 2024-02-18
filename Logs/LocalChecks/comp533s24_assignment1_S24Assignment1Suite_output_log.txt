@@ -1,0 +1,1551 @@
+
+0,Sat Feb 17 12:02:30 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceFactories
+<<
+>>Running test MapperFactory: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test A1ConfigurationProvided
+<<
+>>Running test DefaultFactoryMapObjectList: 
+Tests the map object returned by the configured map factory
+<<
+>>Running test ReducerFactory: 
+Checks that a reducer factory is returned by the configuration and creates a reducer object
+<<
+>>Running test DefaultFactoryReduceObjectList: 
+Tests the reduce object returned by the configured reduce factory
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:02:34 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+>>Running test IntSummingListMapper: 
+Tests the map function of the int summung mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadSumResult: 
+Checks that ints are correcetly input and summed
+<<
+>>Running test StandAloneSingleThreadSumMVC: 
+Checks that summation application follows the required MVC pattern
+<<
+>>Running test StandAloneSingleThreadSumMapReduceListImplementation: 
+Checks that summation application follows the required MapReduce pattern
+<<
+>>Running test StandAloneSingleThreadSumFactoryChange: 
+Checks that summation application makes a mapper factory change
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:02:39 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceClasses
+<<
+>>Running test TokenCountsMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test SumMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test ReducerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:02:42 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadTokenCount
+<<
+>>Running test TokenCountingListMapper: 
+Tests the map function of the token counting mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadTokenCountResult: 
+Checks that token counts are correcetly input and counted
+<<
+>>Running test StandAloneSingleThreadTokenCountMVC: 
+Checks that token counting application follows the requiredn MVC decomposition
+<<
+>>Running test StandAloneSingleThreadTokenCountMapReduceListImplementation: 
+Checks that token counting application follows the required MapReduce pattern
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:03:01 EST 2024*PRE_OUTPUT*
+>>Running suite A1GeneralStyleSuite
+<<
+>>Running test A1NoCheckstyleWarnings
+<<
+>>Running test A1NamedConstants
+<<
+>>Running test A1PublicMethodsOverride
+<<
+>>Running test A1InterfaceAsType
+<<
+>>Running test A1MnemonicNames
+<<
+>>Running test A1AccessModifiersMatched
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:03:05 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+0,Sat Feb 17 12:03:07 EST 2024*PRE_OUTPUT*
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+1,Sat Feb 17 12:04:01 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceFactories
+<<
+>>Running test MapperFactory: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test A1ConfigurationProvided
+<<
+>>Running test DefaultFactoryMapObjectList: 
+Tests the map object returned by the configured map factory
+<<
+>>Running test ReducerFactory: 
+Checks that a reducer factory is returned by the configuration and creates a reducer object
+<<
+>>Running test DefaultFactoryReduceObjectList: 
+Tests the reduce object returned by the configured reduce factory
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+1,Sat Feb 17 12:04:04 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+>>Running test IntSummingListMapper: 
+Tests the map function of the int summung mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadSumResult: 
+Checks that ints are correcetly input and summed
+<<
+>>Running test StandAloneSingleThreadSumMVC: 
+Checks that summation application follows the required MVC pattern
+<<
+>>Running test StandAloneSingleThreadSumMapReduceListImplementation: 
+Checks that summation application follows the required MapReduce pattern
+<<
+>>Running test StandAloneSingleThreadSumFactoryChange: 
+Checks that summation application makes a mapper factory change
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,0.0% complete,0.0,10.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,0.0% complete,0.0,30.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:27 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+>>Running test IntSummingListMapper: 
+Tests the map function of the int summung mapper returned by the configuration
+<<
+>>Running test A1ConfigurationProvided
+<<
+>>Running test StandAloneSingleThreadSumResult: 
+Checks that ints are correcetly input and summed
+<<
+>>Running test StandAloneSingleThreadSumMVC: 
+Checks that summation application follows the required MVC pattern
+<<
+>>Running test StandAloneSingleThreadSumMapReduceListImplementation: 
+Checks that summation application follows the required MapReduce pattern
+<<
+>>Running test StandAloneSingleThreadSumFactoryChange: 
+Checks that summation application makes a mapper factory change
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:30 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:33 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceClasses
+<<
+>>Running test TokenCountsMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test SumMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test ReducerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:36 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceFactories
+<<
+>>Running test MapperFactory: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test DefaultFactoryMapObjectList: 
+Tests the map object returned by the configured map factory
+<<
+>>Running test ReducerFactory: 
+Checks that a reducer factory is returned by the configuration and creates a reducer object
+<<
+>>Running test DefaultFactoryReduceObjectList: 
+Tests the reduce object returned by the configured reduce factory
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:36 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceFactories
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:45 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadTokenCount
+<<
+>>Running test TokenCountingListMapper: 
+Tests the map function of the token counting mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadTokenCountResult: 
+Checks that token counts are correcetly input and counted
+<<
+>>Running test StandAloneSingleThreadTokenCountMVC: 
+Checks that token counting application follows the requiredn MVC decomposition
+<<
+>>Running test StandAloneSingleThreadTokenCountMapReduceListImplementation: 
+Checks that token counting application follows the required MapReduce pattern
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:05:47 EST 2024*PRE_OUTPUT*
+>>Running suite A1SpecificStyleSuite
+<<
+>>Running test A1ClassIsGeneric
+<<
+>>Running test A1ExpectedCalls
+<<
+>>Running test A1ExpectedGetters
+<<
+>>Running test A1ExpectedSetters
+<<
+>>Running test A1ExpectedSignatures
+<<
+>>Running test A1ExpectedSupertypes
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 12:06:04 EST 2024*PRE_OUTPUT*
+>>Running suite A1GeneralStyleSuite
+<<
+>>Running test A1NoCheckstyleWarnings
+<<
+>>Running test A1NamedConstants
+<<
+>>Running test A1PublicMethodsOverride
+<<
+>>Running test A1InterfaceAsType
+<<
+>>Running test A1MnemonicNames
+<<
+>>Running test A1AccessModifiersMatched
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 12:08:06 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceFactories
+<<
+>>Running test MapperFactory: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test A1ConfigurationProvided
+<<
+>>Running test DefaultFactoryMapObjectList: 
+Tests the map object returned by the configured map factory
+<<
+>>Running test ReducerFactory: 
+Checks that a reducer factory is returned by the configuration and creates a reducer object
+<<
+>>Running test DefaultFactoryReduceObjectList: 
+Tests the reduce object returned by the configured reduce factory
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 12:08:10 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadIntSum
+<<
+>>Running test IntSummingListMapper: 
+Tests the map function of the int summung mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadSumResult: 
+Checks that ints are correcetly input and summed
+<<
+>>Running test StandAloneSingleThreadSumMVC: 
+Checks that summation application follows the required MVC pattern
+<<
+>>Running test StandAloneSingleThreadSumMapReduceListImplementation: 
+Checks that summation application follows the required MapReduce pattern
+<<
+>>Running test StandAloneSingleThreadSumFactoryChange: 
+Checks that summation application makes a mapper factory change
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 12:08:13 EST 2024*PRE_OUTPUT*
+>>Running suite MapReduceClasses
+<<
+>>Running test TokenCountsMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test SumMapperClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test ReducerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 12:08:18 EST 2024*PRE_OUTPUT*
+>>Running suite SingleThreadTokenCount
+<<
+>>Running test TokenCountingListMapper: 
+Tests the map function of the token counting mapper returned by the configuration
+<<
+>>Running test StandAloneSingleThreadTokenCountResult: 
+Checks that token counts are correcetly input and counted
+<<
+>>Running test StandAloneSingleThreadTokenCountMVC: 
+Checks that token counting application follows the requiredn MVC decomposition
+<<
+>>Running test StandAloneSingleThreadTokenCountMapReduceListImplementation: 
+Checks that token counting application follows the required MapReduce pattern
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 12:08:21 EST 2024*PRE_OUTPUT*
+>>Running suite A1SpecificStyleSuite
+<<
+>>Running test A1ClassIsGeneric
+<<
+>>Running test A1ExpectedCalls
+<<
+>>Running test A1ExpectedGetters
+<<
+>>Running test A1ExpectedSetters
+<<
+>>Running test A1ExpectedSignatures
+<<
+>>Running test A1ExpectedSupertypes
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MapperFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryMapObjectList,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+DefaultFactoryReduceObjectList,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+IntSummingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMVC,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadSumFactoryChange,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+TokenCountsMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumMapperClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+ReducerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+TokenCountingListMapper,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMVC,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+StandAloneSingleThreadTokenCountMapReduceListImplementation,100.0% complete,30.0,30.0,
+<<
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+4,Sat Feb 17 12:09:48 EST 2024*PRE_OUTPUT*
+>>Running suite A1SpecificStyleSuite
+<<
+>>Running test A1ClassIsGeneric
+<<
+>>Running test A1ExpectedCalls
+<<
+>>Running test A1ExpectedGetters
+<<
+>>Running test A1ExpectedSetters
+<<
+>>Running test A1ExpectedSignatures
+<<
+>>Running test A1ExpectedSupertypes
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+4,Sat Feb 17 12:10:39 EST 2024*PRE_OUTPUT*
+>>Running suite A1GeneralStyleSuite
+<<
+>>Running test A1NoCheckstyleWarnings
+<<
+>>Running test A1NamedConstants
+<<
+>>Running test A1PublicMethodsOverride
+<<
+>>Running test A1InterfaceAsType
+<<
+>>Running test A1MnemonicNames
+<<
+>>Running test A1AccessModifiersMatched
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+
+
+4,Sat Feb 17 12:10:41 EST 2024*PRE_OUTPUT*
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*
+
+

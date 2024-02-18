@@ -1,0 +1,74 @@
+*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+MultiThreadSumResult,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*

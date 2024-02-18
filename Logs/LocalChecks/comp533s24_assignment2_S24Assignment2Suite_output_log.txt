@@ -1,0 +1,1122 @@
+
+0,Sat Feb 17 13:20:15 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,0.0% complete,0.0,10.0,To get style credit provide (possibly stub) missing classes for properties:[barrierClass, joinerClass]
+<<
+>>Test Result:
+PartitionerFactory,0.0% complete,0.0,10.0,In factory class, class comp533.partition.PartitionerFactory no public parameterless factory method with name:getPartitioner public methods found: [public static comp533.partition.Partitioned comp533.partition.PartitionerFactory.getSingleton(), public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException, public final void java.lang.Object.wait() throws java.lang.InterruptedException, public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException, public boolean java.lang.Object.equals(java.lang.Object), public java.lang.String java.lang.Object.toString(), public native int java.lang.Object.hashCode(), public final native java.lang.Class java.lang.Object.getClass(), public final native void java.lang.Object.notify(), public final native void java.lang.Object.notifyAll()]
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,0.0% complete,0.0,10.0,Null partitioner returned by partioner factory 
+<<
+*END_OUTPUT*
+
+
+
+1,Sat Feb 17 13:21:59 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,0.0% complete,0.0,10.0,To get style credit provide (possibly stub) missing classes for properties:[barrierClass, joinerClass]
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 13:44:40 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 13:44:50 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+2,Sat Feb 17 13:44:58 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 19:24:11 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 19:24:21 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 19:24:24 EST 2024*PREVIOUS_OUTPUT*
+
+
+3,Sat Feb 17 19:24:40 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 19:25:01 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationCountsAndSum
+<<
+>>Running test TokenCountBarrier
+<<
+>>Running test MultiThreadTokenCountResult
+<<
+>>Running test SumBarrier
+<<
+>>Running test MultiThreadSumResult
+<<
+>>Running test TokenCountJoiner
+<<
+>>Running test SumJoiner
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+MultiThreadSumResult,0.0% complete,0.0,5.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+3,Sat Feb 17 19:26:01 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionedReduce
+<<
+>>Running test StandAloneTokenCountPartition1Reduce
+<<
+>>Running test StandAloneTokenCountPartition2Reduce
+<<
+>>Running test StandAloneTokenCountPartition3Reduce
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+MultiThreadSumResult,0.0% complete,0.0,5.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+4,Sat Feb 17 19:38:33 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+5,Sat Feb 17 20:36:44 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*
+
+
+
+5,Sat Feb 17 20:36:48 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+5,Sat Feb 17 20:37:00 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionedReduce
+<<
+>>Running test StandAloneTokenCountPartition1Reduce
+<<
+>>Running test MultiThreadTokenCountResult
+<<
+>>Running test StandAloneTokenCountPartition2Reduce
+<<
+>>Running test StandAloneTokenCountPartition3Reduce
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+5,Sat Feb 17 20:37:48 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationCountsAndSum
+<<
+>>Running test TokenCountBarrier
+<<
+>>Running test SumBarrier
+<<
+>>Running test MultiThreadSumResult
+<<
+>>Running test TokenCountJoiner
+<<
+>>Running test SumJoiner
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,0.0% complete,0.0,10.0,main Output Did not match:.*hogwarts.*5.*?%0.0
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+MultiThreadSumResult,0.0% complete,0.0,5.0,main Output Did not match:.*=45.*%0.0
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,Did not pass regular output test
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,Did not pass regular output test
+<<
+*END_OUTPUT*
+
+
+
+6,Sun Feb 18 13:45:19 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+6,Sun Feb 18 13:45:28 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*
+
+
+
+6,Sun Feb 18 13:45:35 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionedReduce
+<<
+>>Running test StandAloneTokenCountPartition1Reduce
+<<
+>>Running test MultiThreadTokenCountResult
+<<
+>>Running test StandAloneTokenCountPartition2Reduce
+<<
+>>Running test StandAloneTokenCountPartition3Reduce
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+*END_OUTPUT*
+
+
+
+6,Sun Feb 18 13:45:41 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationCountsAndSum
+<<
+>>Running test TokenCountBarrier
+<<
+>>Running test SumBarrier
+<<
+>>Running test MultiThreadSumResult
+<<
+>>Running test TokenCountJoiner
+<<
+>>Running test SumJoiner
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+MultiThreadSumResult,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+*END_OUTPUT*
+
+
+
+7,Sun Feb 18 15:13:19 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+>>Running test PartitionerFactory
+<<
+>>Running test A2ConfigurationProvided
+<<
+>>Running test PartitionerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test PartitionerObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+7,Sun Feb 18 15:13:22 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionerClassFactoryAndObject
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+*END_OUTPUT*
+
+
+
+7,Sun Feb 18 15:13:25 EST 2024*PREVIOUS_OUTPUT*
+
+
+7,Sun Feb 18 15:13:32 EST 2024*PRE_OUTPUT*
+>>Running suite PartitionedReduce
+<<
+>>Running test StandAloneTokenCountPartition1Reduce
+<<
+>>Running test MultiThreadTokenCountResult
+<<
+>>Running test StandAloneTokenCountPartition2Reduce
+<<
+>>Running test StandAloneTokenCountPartition3Reduce
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+*END_OUTPUT*
+
+
+
+7,Sun Feb 18 15:13:40 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationCountsAndSum
+<<
+>>Running test TokenCountBarrier
+<<
+>>Running test SumBarrier
+<<
+>>Running test MultiThreadSumResult
+<<
+>>Running test TokenCountJoiner
+<<
+>>Running test SumJoiner
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+MultiThreadSumResult,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+*END_OUTPUT*
+
+
+
+7,Sun Feb 18 15:13:46 EST 2024*PRE_OUTPUT*
+>>Running suite BarrierJoinSynchronizationClassAndObject
+<<
+>>Running test BarrierClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test Barrier
+<<
+>>Running test JoinerClass: 
+Checks that a mapper factory is returned by the configuration and creates a mapper object
+<<
+>>Running test EarlyJoin
+<<
+>>Running test LateJoin
+<<
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A2ConfigurationProvided,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerFactory,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+PartitionerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+PartitionerObject,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+MultiThreadTokenCountResult,100.0% complete,10.0,10.0,
+<<
+>>Test Result:
+StandAloneTokenCountPartition1Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*hogwarts.*0.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition2Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*muggles.*1.*3.*
+<<
+>>Test Result:
+StandAloneTokenCountPartition3Reduce,0.0% complete,0.0,25.0,main Output Did not match:.*slave.*partition assigned:.*wizards.*2.*3.*
+<<
+>>Test Result:
+TokenCountBarrier,0.0% complete,0.0,20.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+MultiThreadSumResult,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+SumBarrier,0.0% complete,0.0,10.0,main Output Did not match:.*slave.*barrier wait start:.*
+<<
+>>Test Result:
+TokenCountJoiner,0.0% complete,0.0,20.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+SumJoiner,0.0% complete,0.0,10.0,main Output Did not match:.*main.*enqueue:.*null.*null.*
+<<
+>>Test Result:
+BarrierClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+Barrier,100.0% complete,40.0,40.0,
+<<
+>>Test Result:
+JoinerClass,100.0% complete,5.0,5.0,
+<<
+>>Test Result:
+EarlyJoin,100.0% complete,20.0,20.0,
+<<
+>>Test Result:
+LateJoin,100.0% complete,20.0,20.0,
+<<
+*END_OUTPUT*
+
+

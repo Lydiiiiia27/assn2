@@ -1,0 +1,42 @@
+*PRE_OUTPUT*
+*OUTPUT*
+*ERROR*
+
+*POST_OUTPUT*
+>>Test Result:
+A1ClassIsGeneric,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedCalls,0.0% complete,0.0,20.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedGetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSetters,0.0% complete,0.0,3.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSignatures,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1ExpectedSupertypes,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1NoCheckstyleWarnings,0.0% complete,0.0,20.0,Could not run checkstyle
+<<
+>>Test Result:
+A1NamedConstants,0.0% complete,0.0,1.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1PublicMethodsOverride,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1InterfaceAsType,0.0% complete,0.0,10.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1MnemonicNames,0.0% complete,0.0,15.0,No checkstyle output, check console error messages
+<<
+>>Test Result:
+A1AccessModifiersMatched,0.0% complete,0.0,5.0,No checkstyle output, check console error messages
+<<
+*END_OUTPUT*

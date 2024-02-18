@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Comp533All">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Comp533All.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Comp533All.jar!/" />
+    </SOURCES>
+  </library>
+</component>
